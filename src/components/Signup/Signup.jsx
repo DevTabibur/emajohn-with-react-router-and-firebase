@@ -8,27 +8,44 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleEmaliBlur = (e) =>{
-        console.log(e.target.email.value)
+    const handleEmailBlur = (e) =>{
+        setEmail(e.target.value)
+    }
+
+    const handlePasswordBlur = (e) =>{
+        setPassword(e.target.value)
+    }
+
+    const handleConfirmPasswordBlur = (e) =>{
+        setConfirmPassword(e.target.value)
+    }
+
+    const handleCreateUser = (e) =>{
+        e.preventDefault()
+        if(password !== confirmPassword){
+            setError("your two password did not matched")
+            return;
+        }
     }
 
     return (
         <div className="form-container">
       <div>
         <h2 className="form-title">Sign Up</h2>
-        <form action="">
+        <form onSubmit={handleCreateUser}>
           <div className="input-group">
             <label htmlFor="email">Email</label>
-            <input onClick={handleEmaliBlur} type="email" name="email" id="" required />
+            <input onBlur={handleEmailBlur} type="email" name="email" id="" required />
           </div>
           <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="" required />
+            <input onBlur={handlePasswordBlur} type="password" name="password" id="" required />
           </div>
           <div className="input-group">
             <label htmlFor="password">Confirm Password</label>
-            <input type="confirm-password" name="confirm-password" id="" required />
+            <input onClick={handleConfirmPasswordBlur} type="confirm-password" name="confirm-password" id="" required />
           </div>
+          <p style={{color: "red"}}>{error}</p>
           <input className="form-submit" type="submit" value="Sign Up" />
         </form>
         <p>
