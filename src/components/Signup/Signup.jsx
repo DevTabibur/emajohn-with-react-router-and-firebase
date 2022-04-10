@@ -4,6 +4,7 @@ import './Signup.css';
 import auth from '../Firebase/Firebase.init.js';
 
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { sendEmailVerification } from 'firebase/auth';
 
 
 const Signup = () => {
@@ -28,7 +29,7 @@ const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword
     }
 
     if(user){
-        navigate("/shop")
+        navigate("/shop");
     }
 
     const handleCreateUser = (e) =>{
