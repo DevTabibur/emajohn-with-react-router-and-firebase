@@ -11,7 +11,9 @@
 10. if user is created redirect to the expected pages
 11. useSignInWithEmailAndPassword for sign in (old user can sign in,new user should be maked by following step 9)
 
-12. 
+12. create RequireAuth component ==> check user exists also tract user location
+13. in route wrapped Require component by using RequireAuth component
+14. 
 
 
 
